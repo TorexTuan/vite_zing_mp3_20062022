@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .theme-brown {
+    --primary-bg-color: #6f514c;
+    --layout-color: #57403b;
+    --sidebar-bg-color: #604a45;
+    --alpha-bg-color: #ffffff1a;
+    --active-bg-color: #705c58;
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #ffffff80;
+    --navigation-text-color: #dadada;
+    --active-border-color: #986d5c;
+  }
+}
+
+@layer components {
+  .before-describe-apply {
+    @apply before: border-[10px] before:border-x-transparent before:border-t-transparent before:border-b-[#312f2f] before:absolute before:top-[-17px] before:left-1/2 before:-translate-x-1/2
+  }
+
+  .display-scrollbar {
+    @apply scrollbar scrollbar-thumb-theme-secondary scrollbar-small
+  }
+}
+
+@layer utilities {
+  .scrollbar-small::-webkit-scrollbar {
+    @apply w-1 delay-75
+  }
+
+  .scrollbar-small::-webkit-scrollbar-thumb {
+    @apply rounded-3xl
+  }
+
+  .tooltip-customize {
+    @apply !px-2 !py-1 !text-xs
+  }
+
+}
+
+.mask-image-on-sidebar {
+  mask-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .8) 10%, #fff 25%, #fff);
+  -webkit-mask-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .8) 10%, #fff 25%, #fff);
+}
