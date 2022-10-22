@@ -163,154 +163,158 @@ function SideBar() {
   }
 
   return (
-    <div className="bg-theme-sidebar w-60 h-screen shrink-0">
-      <div className="h-[70px] flex items-center pl-[28px] pr-[25px]">
-        <img
-          className="w-[120px] cursor-pointer"
-          src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"
-        />
-      </div>
-      <div>
-        {navigationsSidebar.map((navigation: navigationSidebarDto) => {
-          return (
-            <div
-              className={classNames(
-                'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent',
-                {
-                  'border-l-theme-active bg-theme-active text-theme-primary':
-                    navigation.id === navActivationIdex,
-                },
-              )}
-              key={navigation.id}
-              onClick={() => setNavActivationIndex(navigation.id)}
-              onMouseOver={() => setHoverIndex(navigation.id)}
-              onMouseOut={() => setHoverIndex(null)}
-            >
-              <div className="flex flex-grow-1 items-center">
-                {navigation.icon}
-                <p className="font-semibold text-sm">{navigation.title}</p>
-                {navigation.side && (
-                  <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
-                    {navigation.side}
-                  </span>
-                )}
+    <aside className="side-bar-width shrink-0">
+      <div className="bg-theme-sidebar side-bar-width h-full fixed pt-[70px] pb-14">
+        <div className="side-bar-width h-[70px] flex items-center pl-[28px] pr-[25px] fixed top-0">
+          <img
+            className="w-[120px] cursor-pointer"
+            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"
+          />
+        </div>
+        <div className='h-full'>
+          <ul>
+            {navigationsSidebar.map((navigation: navigationSidebarDto) => {
+              return (
+                <li
+                  className={classNames(
+                    'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent',
+                    {
+                      'border-l-theme-active bg-theme-active text-theme-primary':
+                        navigation.id === navActivationIdex,
+                    },
+                  )}
+                  key={navigation.id}
+                  onClick={() => setNavActivationIndex(navigation.id)}
+                  onMouseOver={() => setHoverIndex(navigation.id)}
+                  onMouseOut={() => setHoverIndex(null)}
+                >
+                  <div className="flex flex-grow-1 items-center">
+                    {navigation.icon}
+                    <p className="font-semibold text-sm">{navigation.title}</p>
+                    {navigation.side && (
+                      <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
+                        {navigation.side}
+                      </span>
+                    )}
+                  </div>
+                  {navigation.playIcon && hoverIndex === navigation.id && (
+                    <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+          <div className="border-b-theme-separate border-b-[1px] mx-5 mt-5 mb-2" />
+          <nav
+            onScroll={handleBlurOnScroll}
+            className={classNames(
+              'scrolled-element relative overflow-hidden hover:display-scrollbar',
+              { 'mask-image-on-sidebar': blurOnScroll },
+            )}
+          >
+            <ul>
+              {belowNavSidebars.map((navigation: navigationSidebarDto) => {
+                return (
+                  <li
+                    className={classNames(
+                      'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent',
+                      {
+                        'border-l-theme-active bg-theme-active text-theme-primary':
+                          navigation.id === navActivationIdex,
+                      },
+                    )}
+                    key={navigation.id}
+                    onClick={() => setNavActivationIndex(navigation.id)}
+                    onMouseOver={() => setHoverIndex(navigation.id)}
+                    onMouseOut={() => setHoverIndex(null)}
+                  >
+                    <div className="flex flex-grow-1 items-center">
+                      {navigation.icon}
+                      <p className="font-semibold text-sm">{navigation.title}</p>
+                      {navigation.side && (
+                        <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
+                          {navigation.side}
+                        </span>
+                      )}
+                    </div>
+                    {navigation.playIcon && hoverIndex === navigation.id && (
+                      <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
+                    )}
+                  </li>
+                )
+              })}
+              <div className="w-full px-6">
+                <AdvertBox
+                  backgroundColor="bg-theme-activeBorder"
+                  buttonColor="bg-theme-alpha text-theme-primary border-theme-primary"
+                  content="Đăng nhập để khám phá playlist riêng dành cho bạn"
+                  btnContent="Đăng Nhập"
+                />
               </div>
-              {navigation.playIcon && hoverIndex === navigation.id && (
-                <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
-              )}
-            </div>
-          )
-        })}
-      </div>
-      <div className="border-b-theme-separate border-b-[1px] mx-5 mt-5 mb-2" />
-      <div
-        onScroll={handleBlurOnScroll}
-        className={classNames(
-          'scrolled-element relative max-h-[310px] overflow-hidden hover:display-scrollbar',
-          { 'mask-image-on-sidebar': blurOnScroll },
-        )}
-      >
-        <div>
-          {belowNavSidebars.map((navigation: navigationSidebarDto) => {
-            return (
-              <div
-                className={classNames(
-                  'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent',
-                  {
-                    'border-l-theme-active bg-theme-active text-theme-primary':
-                      navigation.id === navActivationIdex,
-                  },
-                )}
-                key={navigation.id}
-                onClick={() => setNavActivationIndex(navigation.id)}
-                onMouseOver={() => setHoverIndex(navigation.id)}
-                onMouseOut={() => setHoverIndex(null)}
-              >
-                <div className="flex flex-grow-1 items-center">
-                  {navigation.icon}
-                  <p className="font-semibold text-sm">{navigation.title}</p>
-                  {navigation.side && (
-                    <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
-                      {navigation.side}
-                    </span>
+              <div className="w-full px-6">
+                <AdvertBox
+                  backgroundColor="bg-advert-linear-gradient"
+                  buttonColor="bg-[#ffdb00] color-[#32323d] border-[#ffdb00]"
+                  content="Nghe nhạc không quảng cáo cùng kho nhạc VIP"
+                  btnContent="NÂNG CẤP VIP"
+                />
+              </div>
+            </ul>
+            <div
+              onMouseOver={() => setIsHoverShowPen(true)}
+              onMouseLeave={() => setIsHoverShowPen(false)}
+              className="mt-7"
+            >
+              <div className="px-7 py-2 flex justify-between items-center h-7">
+                <h5 className="text-theme-primary text-xs font-bold">THƯ VIỆN</h5>
+                <div
+                  className={classNames(
+                    'cursor-pointer px-2 py-2 rounded-[50%] hover:bg-theme-active hidden',
+                    { '!block': isHoverShowPen },
+                  )}
+                  data-tip
+                  data-for="customization"
+                >
+                  <BsPen className="text-theme-primary text-xs" />
+                </div>
+                <ReactTooltip
+                  className="tooltip-customize"
+                  id="customization"
+                  place="top"
+                  effect="solid"
+                >
+                  Chỉnh sửa
+                </ReactTooltip>
+              </div>
+              {libraryNavSidebars.map((navigation: navigationSidebarDto) => (
+                <div
+                  className="'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent'"
+                  key={navigation.id}
+                  onMouseOver={() => setLibHoverIndex(navigation.id)}
+                >
+                  <div className="flex flex-grow-1 items-center">
+                    {navigation.icon}
+                    <p className="text-sm">{navigation.title}</p>
+                    {navigation.side && (
+                      <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
+                        {navigation.side}
+                      </span>
+                    )}
+                  </div>
+                  {navigation.playIcon && libHoverIndex === navigation.id && (
+                    <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
                   )}
                 </div>
-                {navigation.playIcon && hoverIndex === navigation.id && (
-                  <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
-                )}
-              </div>
-            )
-          })}
-          <div className="w-full px-6">
-            <AdvertBox
-              backgroundColor="bg-theme-activeBorder"
-              buttonColor="bg-theme-alpha text-theme-primary border-theme-primary"
-              content="Đăng nhập để khám phá playlist riêng dành cho bạn"
-              btnContent="Đăng Nhập"
-            />
-          </div>
-          <div className="w-full px-6">
-            <AdvertBox
-              backgroundColor="bg-advert-linear-gradient"
-              buttonColor="bg-[#ffdb00] color-[#32323d] border-[#ffdb00]"
-              content="Nghe nhạc không quảng cáo cùng kho nhạc VIP"
-              btnContent="NÂNG CẤP VIP"
-            />
-          </div>
-        </div>
-        <div
-          onMouseOver={() => setIsHoverShowPen(true)}
-          onMouseLeave={() => setIsHoverShowPen(false)}
-          className="mt-7"
-        >
-          <div className="px-7 py-2 flex justify-between items-center h-7">
-            <h5 className="text-theme-primary text-xs font-bold">THƯ VIỆN</h5>
-            <div
-              className={classNames(
-                'cursor-pointer px-2 py-2 rounded-[50%] hover:bg-theme-active hidden',
-                { '!block': isHoverShowPen },
-              )}
-              data-tip
-              data-for="customization"
-            >
-              <BsPen className="text-theme-primary text-xs" />
+              ))}
             </div>
-            <ReactTooltip
-              className="tooltip-customize"
-              id="customization"
-              place="top"
-              effect="solid"
-            >
-              Chỉnh sửa
-            </ReactTooltip>
-          </div>
-          {libraryNavSidebars.map((navigation: navigationSidebarDto) => (
-            <div
-              className="'border-l-[3px] text-theme-navigation px-6 flex items-center justify-between cursor-pointer py-2 hover:text-theme-primary border-l-transparent'"
-              key={navigation.id}
-              onMouseOver={() => setLibHoverIndex(navigation.id)}
-            >
-              <div className="flex flex-grow-1 items-center">
-                {navigation.icon}
-                <p className="text-sm">{navigation.title}</p>
-                {navigation.side && (
-                  <span className="text-theme-primary text-[8px] px-[6px] pt-[2px] pb-[1px] bg-[#ff0a0a] rounded ml-2 font-semibold tracking-widest">
-                    {navigation.side}
-                  </span>
-                )}
-              </div>
-              {navigation.playIcon && libHoverIndex === navigation.id && (
-                <BsPlayCircle className="text-theme-primary text-lg font-semibold hover:opacity-80" />
-              )}
-            </div>
-          ))}
+          </nav>
         </div>
+        <button className="side-bar-width flex justify-center items-center h-14 border-t-[1px] border-solid border-t-theme-separate fixed bottom-0">
+          <BsPlusLg className="text-theme-primary text-lg mr-[10px]" />
+          <p className="text-theme-primary text-sm font-bold">Tạo playlist mới</p>
+        </button>
       </div>
-      <button className="flex justify-center items-center h-14 border-t-[1px] border-solid border-t-theme-separate w-full">
-        <BsPlusLg className="text-theme-primary text-lg mr-[10px]" />
-        <p className="text-theme-primary text-sm font-bold">Tạo playlist mới</p>
-      </button>
-    </div>
+    </aside>
   )
 }
 
