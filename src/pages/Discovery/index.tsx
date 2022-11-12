@@ -1,11 +1,5 @@
-import Carousel from "../../components/General/Carousel"
-
 function Discovery() {
-  return (
-    <div className="py-8">
-      <Carousel />
-    </div>
-  )
+  return <div>Discovery page</div>
 }
 
 export default Discovery

@@ -149,6 +149,7 @@ function Header() {
   return (
     <div className="h-[70px] w-full px-[60px] bg-theme-layout flex items-center justify-between">
       <div className="flex justify-center items-center">
+        <div>sdflkjasd <div>sdfjahsjkdfhajshdfjahsdfhjkashdfhasjkdhfasjkdfhahsdjkfhkasdhfkashdfhaskdhfkasdhfkjahsdkfhaskdfh</div></div>
         <div className="flex justify-center">
           <BsArrowLeft className="text-[#ffffff] text-2xl mr-5 cursor-pointer" />
           <BsArrowRight className="text-[#897975] text-2xl mr-5" />
