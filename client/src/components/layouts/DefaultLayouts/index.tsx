@@ -4,11 +4,11 @@ import Sidebar from '../components/Sidebar'
 
 function DefautLayouts({ children }: Props) {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full bg-theme-layout h-screen">
       <Sidebar />
       <div className="w-full">
         <Header />
-        <div className="px-[70px] bg-theme-layout">{children}</div>
+        <div className="px-[70px]">{children}</div>
       </div>
     </div>
   )

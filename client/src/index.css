@@ -4,15 +4,15 @@
 
 @layer base {
   .theme-brown {
-    --primary-bg-color: #6f514c;
-    --layout-color: #57403b;
-    --sidebar-bg-color: #604a45;
+    --primary-bg-color: #46312b;
+    --layout-color: #251b18;
+    --sidebar-bg-color: #302724;
     --alpha-bg-color: #ffffff1a;
-    --active-bg-color: #705c58;
+    --active-bg-color: hsla(0,0%,100%,0.1);
     --primary-text-color: #ffffff;
     --secondary-text-color: #ffffff80;
     --navigation-text-color: #dadada;
-    --active-border-color: #986d5c;
+    --active-border-color: #b65f20;
   }
 }
 
@@ -23,6 +23,10 @@
 
   .display-scrollbar {
     @apply scrollbar scrollbar-thumb-theme-secondary scrollbar-small
+  }
+
+  .side-bar-width {
+    @apply w-[240px];
   }
 }
 

@@ -163,7 +163,7 @@ function SideBar() {
   }
 
   return (
-    <aside className="side-bar-width shrink-0">
+    <aside className="side-bar-width h-full shrink-0">
       <div className="bg-theme-sidebar side-bar-width h-full fixed pt-[70px] pb-14">
         <div className="side-bar-width h-[70px] flex items-center pl-[28px] pr-[25px] fixed top-0">
           <img
@@ -208,7 +208,7 @@ function SideBar() {
           <nav
             onScroll={handleBlurOnScroll}
             className={classNames(
-              'scrolled-element relative overflow-hidden hover:display-scrollbar',
+              'scrolled-element relative overflow-hidden hover:display-scrollbar h-[calc(100%-230px)]',
               { 'mask-image-on-sidebar': blurOnScroll },
             )}
           >
@@ -309,7 +309,9 @@ function SideBar() {
             </div>
           </nav>
         </div>
-        <button className="side-bar-width flex justify-center items-center h-14 border-t-[1px] border-solid border-t-theme-separate fixed bottom-0">
+        <button 
+          className="side-bar-width bg-theme-sidebar flex justify-center items-center h-14 border-t-[1px] border-solid border-t-theme-separate fixed bottom-0"
+        >
           <BsPlusLg className="text-theme-primary text-lg mr-[10px]" />
           <p className="text-theme-primary text-sm font-bold">Tạo playlist mới</p>
         </button>
